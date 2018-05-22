@@ -1,0 +1,14 @@
+public class Main {
+
+    public static void main(String[] args) {
+        int [] changes = {0, 1, 1, 0, 1};
+
+           for (int i = 0; i < changes.length; i++) {
+//           System.out.println("changes [" + i + "] = " + changes[i]);
+          if (changes[i] == 1)
+              changes [i] = 0;
+            else changes [i] = 1;
+             System.out.println("changes [" + i + "] = " + changes[i]);
+        }
+    }
+}

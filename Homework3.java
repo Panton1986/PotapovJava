@@ -1,26 +1,38 @@
-package geekbrains.lesson3.HomeWork;
-
 import java.util.Random;
 import java.util.Scanner;
+ 
+public class Main  {
+  public static Scanner sc = new Scanner(System.in);
 
-public class Main {
-    public static Scanner sc = new Scanner(System.in);
-    public static void main(String[] args) {
+	public static void main(String args[]){
+	Random rand = new Random();
+  int a = rand.nextInt (10);
+  System.out.println(a);
+  
+  int d;
+  
+  do {
+    d = num ("Введите число от 0 до 9", 0, 9);
+    System.out.println("Вы ввели число = " + d);
 
-            Random rand = new Random();
-            int a = rand.nextInt(10);
-            System.out.println(a);
+    if (d == a) System.out.println("Угадал");
+    else if (d < a) System.out.println("Неверно, Загаданное число больше");
+    else if (d > a) System.out.println("Неверно, Загаданное число меньше");
+    else System.out.println("не Угадал");
+  }
+  while (d != a);
+  
+}
 
-            int d = num ("Введите число от 0 до 9", 0, 9);
-            System.out.println("d = " +d);
+  public static int num (String massage, int min, int max){
+    int x;
+    do {
+      System.out.println(massage);
+      x = sc.nextInt();    
     }
-        public static int num(String message, int min, int max){
-        int x;
-        do {
-            System.out.println(message);
-            x = sc.nextInt();
-            } while (x < min || x > max);
-        return x;
-        }
+    while (x < min || x > max);
+    return x;
+  }
+
 
 }

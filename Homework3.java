@@ -10,13 +10,16 @@ public class Main  {
      Random rand = new Random();
         int a = rand.nextInt (10);
         System.out.println(a);
-
+        boolean toContinue = true;
         int i = 3;
         int d;
         int c;
 //        c = novayaIgra ("Хочешь сыграть 1-да, 0-нет", 0, 1);
 //        if (c == 1)
-            System.out.println("Попробуй угадать число от 0 до 9, есть 3 попытки");
+while (toContinue) {
+  if (i == 0) toContinue = false;
+  if (i == 0) c = novayaIgra ("Хочешь сыграть 1-да, 0-нет", 0, 1);
+          System.out.println("Попробуй угадать число от 0 до 9, есть 3 попытки");
             do {
                 i--;
                 System.out.println();
@@ -29,9 +32,10 @@ public class Main  {
             }
             while (d != a && i > 0);
                 if (d != a) System.out.println("К сожалению попытки закончились, Загаданное число = " + a);
+                System.out.println();
 //            System.out.print("Повторить игру?");
         }
-
+    }
     public static int num (String massage, int min, int max){
         int x;
         do {
@@ -51,4 +55,3 @@ public class Main  {
         return y;
     }
 }
-

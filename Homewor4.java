@@ -68,22 +68,22 @@ public class Main  {
         x = sc.nextInt()-1;
         y = sc.nextInt()-1;
       } while (!isCellValid(x,y));
-      map[x][y] = DOT_X;
+      map[y][x] = DOT_X;
     }
     public static boolean isCellValid(int x, int y){
       if (x < 0 || x >= SIZE || y < 0 || y >= SIZE) return false;
-      if (map[x][y] == DOT_EMPTY) return true;
+      if (map[y][x] == DOT_EMPTY) return true;
       return false;
     }
     public static void compTurn(){
       int x,y;
       do{
-        System.out.println("Введите координаты X Y");
+        System.out.println("Компьютер ходит");
         x = rand.nextInt(SIZE);
         y = rand.nextInt(SIZE);
       } while (!isCellValid(x,y));
-      System.out.println("Сделан ход в точку" + (x+1) + " " + (y+1));
-      map[x][y] = DOT_O;
+      System.out.println("Сделан ход в точку " + (x+1) + " " + (y+1));
+      map[y][x] = DOT_O;
     }
     public static boolean checkWin(char symb){
       if(map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;

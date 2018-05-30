@@ -85,17 +85,62 @@ public class Main  {
       System.out.println("Сделан ход в точку " + (x+1) + " " + (y+1));
       map[y][x] = DOT_O;
     }
-    public static boolean checkWin(char symb){
-      if(map[0][0] == symb && map[0][1] == symb && map[0][2] == symb) return true;
-      if(map[1][0] == symb && map[1][1] == symb && map[1][2] == symb) return true;
-      if(map[2][0] == symb && map[2][1] == symb && map[2][2] == symb) return true;
-      if(map[0][0] == symb && map[1][0] == symb && map[2][0] == symb) return true;
-      if(map[0][1] == symb && map[1][1] == symb && map[2][1] == symb) return true;
-      if(map[0][2] == symb && map[1][2] == symb && map[2][2] == symb) return true;
-      if(map[0][0] == symb && map[1][1] == symb && map[2][2] == symb) return true;
-      if(map[2][0] == symb && map[1][1] == symb && map[0][2] == symb) return true;
-      return false;
-    }  
+    public static boolean checkWin(char symb) {
+        int rowCount = 0;
+        int columnCount = 0;
+          for (int i = 0; i < SIZE; i++) {
+            for (int g = 0; g < SIZE - DOTS_TO_WIN + 1; g++) {
+                for (int j = 0; j < DOTS_TO_WIN; j++) {                    
+                    if (map[i][j + g] == symb) {
+                        rowCount++;
+                        if (rowCount == DOTS_TO_WIN) return true;
+                    } else {
+                        rowCount = 0;
+                    }
+                    
+                    if (map[j + g][i] == symb) {
+                        columnCount++;
+                        if (columnCount == DOTS_TO_WIN) return true;
+                    } else {
+                        columnCount = 0;
+                    }
+                }
+                rowCount = 0;
+                columnCount = 0;
+            }
+        }
+
+        int basicDiagonal = 0;
+        int secondaryDiagonal = 0;
+
+        for (int i = 0; i < SIZE - DOTS_TO_WIN + 1; i++) {
+            for (int g = 0; g < SIZE - DOTS_TO_WIN + 1; g++) {
+                for (int j = 0; j < DOTS_TO_WIN; j++) {
+                    
+                    if (map[i + j][g + j] == symb) {
+                        basicDiagonal++;
+                        if (basicDiagonal == DOTS_TO_WIN) return true;
+                    } else {
+                        basicDiagonal = 0;
+                    }
+                    
+                    if (map[i + DOTS_TO_WIN - 1 - j][g + j] == symb) {
+                        secondaryDiagonal++;
+                        if (secondaryDiagonal == DOTS_TO_WIN) return true;
+                    } else {
+                        secondaryDiagonal = 0;
+                    }
+                }
+                basicDiagonal = 0;
+                secondaryDiagonal = 0;
+            }
+        }
+
+        return false;
+    }
+
+
+
     public static boolean isMapFull(){
       for (int i = 0; i < SIZE; i++){
         for (int j = 0; j < SIZE; j++){

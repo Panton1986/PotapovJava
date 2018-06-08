@@ -1,0 +1,75 @@
+public class Main {
+
+    public static void main(String args[]) {
+        Animal animal = new Animal();
+        Cat cat = new Cat(200, "noSwim", 2, "Barsik");
+        Dog dog = new Dog(500, 10, 0.5f, "Cesar");
+//        animal.info();
+//        cat.info();
+        if (cat.catCan(true) && dog.dogCan(true)) {
+            cat.catInfo();
+            dog.dogInfo();
+        }
+    }
+}
+
+public class Animal  {
+    public int run;
+    public int swim;
+    public float jump;
+    public Animal(){
+    }
+    public Animal(int run, int swim, float jump){
+        this.run = run;
+        this.swim = swim;
+        this.jump = jump;
+    }
+//    public void info(){
+//        System.out.println("Animal: " + name)
+//   }
+}
+
+class Cat extends Animal {
+    protected String name, swim;
+    public Cat(String name, String swim){
+    }
+    public Cat(int run, String swim, float jump, String name){
+        this.run = run;
+        this.jump = jump;
+        this.name = name;
+        this.swim = swim;
+    }
+    public void catInfo(){
+        System.out.println("Cat: " + name + " Run: " + run + " Swim: " + swim + " Jump: " + jump);
+    }
+    public boolean catCan(boolean a){
+        a = true;
+        if (run > 200 || jump > 2){
+            a = false;
+            System.out.println("Это слишком для кота");
+        }
+        return  a;
+    }
+}
+class Dog extends Animal {
+    protected String name;
+    public Dog(String name){
+
+    }
+    public Dog(int run, int swim, float jump, String name){
+        super(run, swim, jump);
+        this.name = name;
+    }
+    public void dogInfo(){
+
+        System.out.println("Dog: " + name + " Run: " + run + " Swim: " + swim + " Jump: " + jump);
+    }
+    public boolean dogCan(boolean a){
+        a = true;
+        if (run > 500 || swim > 10 || jump > 0.5){
+            a = false;
+            System.out.println("Это слишком для собаки");
+        }
+        return  a;
+    }
+}
